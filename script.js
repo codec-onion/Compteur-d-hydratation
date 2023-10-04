@@ -22,49 +22,60 @@ if (localStorage.getItem('glassCapacity')) {
 
 const glassCapacityDisplay = document.querySelector('.glass-capacity-display')
 glassCapacityDisplay.innerText = glassCapacity
-function setGlassQuantity() {
+function setGlassCapacity() {
   document
     .querySelector('.glass-capacity-button')
     .addEventListener('click', () => {
       const glassCapacityInput = document.querySelector('.glass-capacity-input')
-      glassCapacity = glassCapacityInput.value
+      glassCapacity = parseInt(glassCapacityInput.value)
       document.querySelector('.glass-capacity-display').innerText =
         glassCapacity
       glassCapacityInput.value = 0
       localStorage.setItem('glassCapacity', glassCapacity)
+      document.querySelector('.warning-message').innerText = ''
     })
 }
-setGlassQuantity()
+setGlassCapacity()
 
-const waterGlassDisplay = document.querySelector('.water-glass')
+const glassCounterDisplay = document.querySelector('.water-glass')
 if (glassCounter <= 1) {
-  waterGlassDisplay.innerText = `${glassCounter} verre`
+  glassCounterDisplay.innerText = `${glassCounter} verre`
 } else {
-  waterGlassDisplay.innerText = `${glassCounter} verres`
+  glassCounterDisplay.innerText = `${glassCounter} verres`
 }
-function setWaterGlassDisplay() {
+function setGlassCounterDisplay() {
   document.querySelector('.add-half-glass').addEventListener('click', () => {
+    if (glassCapacity === 0) {
+      document.querySelector('.warning-message').innerText =
+        'Vous devez renseigner la contenance de votre verre 😞'
+      return
+    }
     glassCounter = glassCounter + 0.5
     if (glassCounter <= 1) {
-      waterGlassDisplay.innerText = `${glassCounter} verre`
+      glassCounterDisplay.innerText = `${glassCounter} verre`
     } else {
-      waterGlassDisplay.innerText = `${glassCounter} verres`
+      glassCounterDisplay.innerText = `${glassCounter} verres`
     }
     localStorage.setItem('glassCounter', glassCounter)
-    setWaterQuantityDisplay()
+    setWaterQuantityDisplay(2)
   })
   document.querySelector('.add-a-glass').addEventListener('click', () => {
+    if (glassCapacity === 0) {
+      document.querySelector('.warning-message').innerText =
+        'Vous devez renseigner la contenance de votre verre 😞'
+      return
+    }
     glassCounter++
     if (glassCounter <= 1) {
-      waterGlassDisplay.innerText = `${glassCounter} verre`
+      glassCounterDisplay.innerText = `${glassCounter} verre`
     } else {
-      waterGlassDisplay.innerText = `${glassCounter} verres`
+      glassCounterDisplay.innerText = `${glassCounter} verres`
     }
     localStorage.setItem('glassCounter', glassCounter)
-    setWaterQuantityDisplay()
+    setWaterQuantityDisplay(1)
   })
 }
-setWaterGlassDisplay()
+setGlassCounterDisplay()
 
 const waterQuantityDisplay = document.querySelector('.water-quantity')
 if (waterQuantity === 0 || waterQuantity === 1) {
@@ -74,8 +85,8 @@ if (waterQuantity === 0 || waterQuantity === 1) {
 } else {
   waterQuantityDisplay.innerText = `${waterQuantity / 100} litres`
 }
-function setWaterQuantityDisplay() {
-  waterQuantity = glassCounter * glassCapacity
+function setWaterQuantityDisplay(divisor) {
+  waterQuantity = waterQuantity + glassCapacity / divisor
   if (waterQuantity < 100) {
     waterQuantityDisplay.innerText = `${waterQuantity} centilitres`
   } else {
@@ -89,7 +100,7 @@ function reset() {
     glassCounter = 0
     waterQuantity = 0
     glassCapacity = 0
-    waterGlassDisplay.innerText = `${glassCounter} verre`
+    glassCounterDisplay.innerText = `${glassCounter} verre`
     waterQuantityDisplay.innerText = `${waterQuantity} centilitre`
     glassCapacityDisplay.innerText = glassCapacity
     localStorage.clear()
