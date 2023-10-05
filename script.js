@@ -27,6 +27,10 @@ function setGlassCapacity() {
     .querySelector('.glass-capacity-button')
     .addEventListener('click', () => {
       const glassCapacityInput = document.querySelector('.glass-capacity-input')
+      if (parseInt(glassCapacityInput.value) === 0) {
+        glassCapacityInput.setAttribute('style', 'border: 2px solid red')
+        return
+      }
       glassCapacity = parseInt(glassCapacityInput.value)
       document.querySelector('.glass-capacity-display').innerText =
         glassCapacity

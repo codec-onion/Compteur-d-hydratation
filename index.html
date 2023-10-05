@@ -8,21 +8,27 @@
   </head>
   <body>
     <h1>Quantité d'eau bue sur la journée</h1>
-    <h2>Où j'en suis?</h2>
-    <p>
-      Votre verre contient
-      <span class="glass-capacity-display"></span> centilitres.
-    </p>
-    <p>Vous avez bu <span class="water-glass"></span> d'eau.</p>
-    <p>Ce qui correspond à <span class="water-quantity"></span>.</p>
-    <h2>Contenance de votre verre d'eau en centilitre</h2>
-    <input type="number" class="glass-capacity-input" min="0" placeholder="0" />
-    <button class="glass-capacity-button">Enregistrer la contenance</button>
-    <h2>Ajouter au compteur...</h2>
-    <p class="warning-message"></p>
-    <button class="add-half-glass">...un demi-verre</button>
-    <button class="add-a-glass">...un verre</button>
-    <button class="reset">Remise à zéro du compteur</button>
+    <div class="information">
+      <h2>Où j'en suis?</h2>
+      <p>
+        Votre verre contient
+        <span class="glass-capacity-display"></span> centilitres.
+      </p>
+      <p>Vous avez bu <span class="water-glass"></span> d'eau.</p>
+      <p>Ce qui correspond à <span class="water-quantity"></span>.</p>
+    </div>
+    <div class="set_glass_capacity">
+      <h2>Contenance de votre verre d'eau en centilitre</h2>
+      <input type="number" class="glass-capacity-input" min="0" value="0" />
+      <button class="glass-capacity-button">Enregistrer la contenance</button>
+    </div>
+    <div class="add_to_counter">
+      <h2>Ajouter au compteur...</h2>
+      <p class="warning-message"></p>
+      <button class="add-half-glass">...un demi-verre</button>
+      <button class="add-a-glass">...un verre</button>
+      <button class="reset">Remise à zéro du compteur</button>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
