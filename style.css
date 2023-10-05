@@ -48,15 +48,15 @@ input {
 
 .information {
     opacity: 0;
-    animation: load-appearance 600ms ease-out 100ms forwards;
+    animation: load-appearance 600ms ease-out 200ms forwards;
 }
 .set_glass_capacity {
     opacity: 0;
-    animation: load-appearance 600ms ease-out 200ms forwards;
+    animation: load-appearance 600ms ease-out 400ms forwards;
 }
 .add_to_counter {
     opacity: 0;
-    animation: load-appearance 600ms ease-out 300ms forwards;
+    animation: load-appearance 600ms ease-out 600ms forwards;
 }
 @keyframes load-appearance {
     from {
