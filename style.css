@@ -11,6 +11,44 @@ body {
     text-align: center;
 }
 
+@keyframes load_appearance_h1 {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 100;
+    }
+}
+@keyframes load_appearance_informations {
+    from {
+        opacity: 0;
+        transform: translateX(-15%);
+    } 
+    to {
+        opacity: 100;
+        transform: translateX(0);
+    }
+}
+@keyframes load_appearance_set_glass_capacity {
+    from {
+        opacity: 0;
+        transform: translateX(15%);
+    } 
+    to {
+        opacity: 100;
+        transform: translateX(0);
+    }
+}
+@keyframes load_appearance_add_to_counter {
+    from {
+        opacity: 0;
+        transform: translateX(-15%);
+    } 
+    to {
+        opacity: 100;
+        transform: translateX(0);
+    }
+}
+
 h2, h3 {
     font-family: 'Oswald', sans-serif;
     margin: 30px 0 20px 0;
@@ -26,7 +64,7 @@ h1 {
     padding: 20px;
     margin-bottom: 20px;
     opacity: 0;
-    animation: load-appearance 600ms ease-out 0ms forwards;
+    animation: 600ms ease-out forwards load_appearance_h1;
 }
 button {
     border: 1px solid black;
@@ -46,22 +84,18 @@ input {
     padding: 5px;
 }
 
-.information {
+.informations {
+    transform: translateX(-15%);
     opacity: 0;
-    animation: load-appearance 600ms ease-out 200ms forwards;
+    animation: 600ms ease-out 200ms forwards load_appearance_informations;
 }
 .set_glass_capacity {
+    transform: translateX(15%);
     opacity: 0;
-    animation: load-appearance 600ms ease-out 400ms forwards;
+    animation: 600ms ease-out 400ms forwards load_appearance_set_glass_capacity;
 }
 .add_to_counter {
+    transform: translateX(-15%);
     opacity: 0;
-    animation: load-appearance 600ms ease-out 600ms forwards;
-}
-@keyframes load-appearance {
-    from {
-        opacity: 0;
-    } to {
-        opacity: 100;
-    }
+    animation: 600ms ease-out 600ms forwards load_appearance_add_to_counter;
 }
