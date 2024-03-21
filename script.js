@@ -21,7 +21,10 @@ if (localStorage.getItem('glassCapacity')) {
 }
 
 const glassCapacityDisplay = document.querySelector('.glass-capacity-display')
-glassCapacityDisplay.innerText = glassCapacity
+glassCapacityDisplay.innerText =
+  glassCapacity > 1
+    ? `${glassCapacity} centilitres`
+    : `${glassCapacity} centilitre`
 function setGlassCapacity() {
   document
     .querySelector('.glass-capacity-button')
@@ -33,7 +36,9 @@ function setGlassCapacity() {
       }
       glassCapacity = parseInt(glassCapacityInput.value)
       document.querySelector('.glass-capacity-display').innerText =
-        glassCapacity
+        glassCapacity > 1
+          ? `${glassCapacity} centilitres`
+          : `${glassCapacity} centilitre`
       glassCapacityInput.value = 0
       localStorage.setItem('glassCapacity', glassCapacity)
       document.querySelector('.warning-message').innerText = ''
